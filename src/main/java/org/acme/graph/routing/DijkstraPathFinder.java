@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.acme.graph.model.Edge;
 import org.acme.graph.model.Graph;
+import org.acme.graph.model.Path;
 import org.acme.graph.model.Vertex;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,7 +36,7 @@ public class DijkstraPathFinder {
 	 * @param destination
 	 * @return
 	 */
-	public List<Edge> findPath(Vertex origin, Vertex destination) {
+	public Path findPath(Vertex origin, Vertex destination) {
 		log.info("findPath({},{})...",origin,destination);
 		initGraph(origin);
 		Vertex current;
@@ -43,11 +44,11 @@ public class DijkstraPathFinder {
 			visit(current);
 			if (destination.getReachingEdge() != null) {
 				log.info("findPath({},{}) : path found",origin,destination);
-				return buildPath(destination);
+				return new Path(buildPath(destination));
 			}
 		}
 		log.info("findPath({},{}) : path not found",origin,destination);
-		return null;
+		return new Path();
 	}
 
 	/**
@@ -80,25 +81,6 @@ public class DijkstraPathFinder {
 		 */
 		vertex.setVisited(true);
 	}
-
-	/**
-	 * Recherche des arcs sortant d'un sommet
-	 * 
-	 * @param vertex
-	 * @return
-	 */
-	/*
-	private List<Edge> findOutEdges(Vertex vertex) {
-		List<Edge> result = new ArrayList<Edge>();
-		for (Edge candidate : graph.getEdges()) {
-			if (candidate.getSource() != vertex) {
-				continue;
-			}
-			result.add(candidate);
-		}
-		return result;
-	}
-	*/
 
 	/**
 	 * Construit le chemin en remontant les relations incoming edge
