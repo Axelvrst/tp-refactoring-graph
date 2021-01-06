@@ -1,5 +1,8 @@
 package org.acme.graph.model;
 
+import java.util.Collection;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vividsolutions.jts.geom.Coordinate;
 
@@ -11,6 +14,18 @@ import com.vividsolutions.jts.geom.Coordinate;
  *
  */
 public class Vertex {
+	
+	/**
+	 * Arc entrant
+	 */
+	@JsonIgnore
+	private List<Edge> inEdges;
+	
+	/**
+	 * Arc sortant
+	 */
+	@JsonIgnore
+	private List<Edge> outEdges;
 
 	/**
 	 * Identifiant du sommet
@@ -37,6 +52,14 @@ public class Vertex {
 
 	Vertex() {
 
+	}
+	
+	public Collection<Edge> getInEdges() {
+		return inEdges;
+	}
+
+	public Collection<Edge> getOutEdges() {
+		return outEdges;
 	}
 
 	public String getId() {

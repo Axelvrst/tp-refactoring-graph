@@ -1,6 +1,7 @@
 package org.acme.graph.routing;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -56,7 +57,9 @@ public class DijkstraPathFinder {
 	 */
 	private void visit(Vertex vertex) {
 		log.trace("visit({})", vertex);
-		List<Edge> outEdges = findOutEdges(vertex);
+		// List<Edge> outEdges = findOutEdges(vertex);
+		Collection<Edge> outEdges = vertex.getOutEdges();
+		
 		/*
 		 * On étudie chacun des arcs sortant pour atteindre de nouveaux sommets ou
 		 * mettre à jour des sommets déjà atteint si on trouve un meilleur coût
@@ -85,6 +88,7 @@ public class DijkstraPathFinder {
 	 * @param vertex
 	 * @return
 	 */
+	/*
 	private List<Edge> findOutEdges(Vertex vertex) {
 		List<Edge> result = new ArrayList<Edge>();
 		for (Edge candidate : graph.getEdges()) {
@@ -95,6 +99,7 @@ public class DijkstraPathFinder {
 		}
 		return result;
 	}
+	*/
 
 	/**
 	 * Construit le chemin en remontant les relations incoming edge
