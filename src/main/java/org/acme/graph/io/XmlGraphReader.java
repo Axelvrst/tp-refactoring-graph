@@ -2,9 +2,7 @@ package org.acme.graph.io;
 
 import java.io.File;
 
-import org.acme.graph.model.Edge;
 import org.acme.graph.model.Graph;
-import org.acme.graph.model.Vertex;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -42,9 +40,6 @@ public class XmlGraphReader {
 			XPath xpath = XPath.newInstance("./vertices/vertex");
 			for (Object node : xpath.selectNodes(root)) {
 				Element vertexElement = (Element) node;
-				// Vertex vertex = new Vertex();
-				// vertex.setId(vertexElement.getAttribute("id").getValue());
-				// graph.getVertices().add(vertex);
 				Coordinate coordinate = new Coordinate(Double.valueOf(vertexElement.getAttribute("x").getValue()),
 						Double.valueOf(vertexElement.getAttribute("y").getValue()));
 				graph.createVertex(coordinate, vertexElement.getAttribute("id").getValue());
@@ -60,19 +55,10 @@ public class XmlGraphReader {
 				String sourceId = edgeElement.getAttribute("source").getValue();
 				String targetId = edgeElement.getAttribute("target").getValue();
 				
-				graph.createEdge(graph.findVertex(sourceId), graph.findVertex(targetId)
-						, edgeElement.getAttribute("id").getValue());
-				// Edge edge = new Edge(graph.findVertex(sourceId), graph.findVertex(targetId));
-				
-				// edge.setId(edgeElement.getAttribute("id").getValue());
-
-				// String sourceId = edgeElement.getAttribute("source").getValue();
-				// edge.setSource(graph.findVertex(sourceId));
-
-				// String targetId = edgeElement.getAttribute("target").getValue();
-				// edge.setTarget(graph.findVertex(targetId));
-
-				// graph.getEdges().add(edge);
+				graph.createEdge(graph.findVertex(sourceId),
+						graph.findVertex(targetId),
+						edgeElement.getAttribute("id").getValue()
+						);
 			}
 		}
 

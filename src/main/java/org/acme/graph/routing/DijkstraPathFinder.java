@@ -57,7 +57,6 @@ public class DijkstraPathFinder {
 	 */
 	private void visit(Vertex vertex) {
 		log.trace("visit({})", vertex);
-		// List<Edge> outEdges = findOutEdges(vertex);
 		Collection<Edge> outEdges = vertex.getOutEdges();
 		
 		/*

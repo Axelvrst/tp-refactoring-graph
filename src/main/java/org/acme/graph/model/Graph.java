@@ -29,6 +29,7 @@ public class Graph {
 	 * @return
 	 */
 	public Vertex createVertex(Coordinate coordinate, String id) {
+		assert(coordinate != null);
 		Vertex vertice = new Vertex();
 		vertice.setId(id);
 		vertice.setCoordinate(coordinate);
@@ -42,6 +43,7 @@ public class Graph {
 	 * @return
 	 */
 	public Edge createEdge(Vertex source, Vertex target, String id) {
+		assert(source != null && target != null);
 		Edge edge = new Edge(source, target);
 		edge.setId(id);
 		this.edges.add(edge);
@@ -56,17 +58,6 @@ public class Graph {
 	public List<Vertex> getVertices() {
 		return vertices;
 	}
-
-	/**
-	 * Récupération de la liste arcs
-	 * 
-	 * @return
-	 */
-	/*
-	public void setVertices(List<Vertex> vertices) {
-		this.vertices = vertices;
-	}
-	*/
 
 	/**
 	 * Recherche d'un sommet par identifiant
@@ -107,16 +98,5 @@ public class Graph {
 	public List<Edge> getEdges() {
 		return edges;
 	}
-
-	/**
-	 * Définition de la liste des arcs
-	 * 
-	 * @param edges
-	 */
-	/*
-	public void setEdges(List<Edge> edges) {
-		this.edges = edges;
-	}
-	*/
 
 }
