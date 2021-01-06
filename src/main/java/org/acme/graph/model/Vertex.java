@@ -19,12 +19,12 @@ public class Vertex {
 	/**
 	 * Arc entrant
 	 */
-	private List<Edge> inEdges;
+	private List<Edge> inEdges = new ArrayList<Edge>();
 	
 	/**
 	 * Arc sortant
 	 */
-	private List<Edge> outEdges;
+	private List<Edge> outEdges = new ArrayList<Edge>();
 
 	/**
 	 * Identifiant du sommet

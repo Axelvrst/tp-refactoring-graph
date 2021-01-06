@@ -32,6 +32,8 @@ public class Application {
 		 * 
 		 * @see https://stackoverflow.com/a/37202883
 		 */
+		System.setProperty("spring.jackson.serialization.INDENT_OUTPUT", "true");
+
 		new SpringApplicationBuilder().sources(Application.class).resourceLoader(new JarResourceLoader()).run(args);
 	}
 
