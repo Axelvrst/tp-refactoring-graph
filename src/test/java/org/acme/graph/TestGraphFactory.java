@@ -18,7 +18,7 @@ public class TestGraphFactory {
 	 */
 	public static Graph createGraph01(){
 		Graph graph = new Graph();
-
+		/*
 		Vertex a = new Vertex();
 		a.setId("a");
 		a.setCoordinate(new Coordinate(0.0, 0.0));
@@ -55,7 +55,18 @@ public class TestGraphFactory {
 		ad.setId("ad");		
 		// ad.setSource(a);
 		// ad.setTarget(d);
-		graph.getEdges().add(ad);		
+		graph.getEdges().add(ad);
+		*/
+		
+		Vertex a = graph.createVertex(new Coordinate(0.0, 0.0),"a");
+		Vertex b = graph.createVertex(new Coordinate(1.0, 0.0),"b");
+		graph.createEdge(a,b,"ab");
+		
+		Vertex c = graph.createVertex(new Coordinate(2.0, 0.0),"c");
+		graph.createEdge(b,c,"ab");
+		
+		Vertex d = graph.createVertex(new Coordinate(1.0, 1.0),"d");
+		graph.createEdge(a,d,"ab");
 		
 		return graph;
 	}

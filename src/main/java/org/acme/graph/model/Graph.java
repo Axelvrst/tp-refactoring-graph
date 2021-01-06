@@ -22,7 +22,32 @@ public class Graph {
 	 * Liste des arcs
 	 */
 	private List<Edge> edges = new ArrayList<Edge>();
-
+	
+	/**
+	 * Fabrique de Vertex
+	 * 
+	 * @return
+	 */
+	public Vertex createVertex(Coordinate coordinate, String id) {
+		Vertex vertice = new Vertex();
+		vertice.setId(id);
+		vertice.setCoordinate(coordinate);
+		this.vertices.add(vertice);
+		return vertice;
+	}
+	
+	/**
+	 * Fabrique d'Edge
+	 * 
+	 * @return
+	 */
+	public Edge createEdge(Vertex source, Vertex target, String id) {
+		Edge edge = new Edge(source, target);
+		edge.setId(id);
+		this.edges.add(edge);
+		return edge;
+	}
+	
 	/**
 	 * Récupération de la liste sommets
 	 * 
@@ -37,9 +62,11 @@ public class Graph {
 	 * 
 	 * @return
 	 */
+	/*
 	public void setVertices(List<Vertex> vertices) {
 		this.vertices = vertices;
 	}
+	*/
 
 	/**
 	 * Recherche d'un sommet par identifiant
@@ -86,8 +113,10 @@ public class Graph {
 	 * 
 	 * @param edges
 	 */
+	/*
 	public void setEdges(List<Edge> edges) {
 		this.edges = edges;
 	}
+	*/
 
 }
