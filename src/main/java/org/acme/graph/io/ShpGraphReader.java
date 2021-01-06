@@ -59,10 +59,10 @@ public class ShpGraphReader {
 				Vertex target = getOrCreateVertex(graph, geometry.getEndPoint().getCoordinate());
 
 				/* Création de l'arc pour le parcours en sens direct */
-				graph.createEdge(source, target, id + "-direct");
+				graph.createEdge(source, target, id + "-direct").setLineString(geometry);
 
 				/* Création de l'arc pour le parcours en sens opposé */
-				graph.createEdge(target, source, id + "-reverse");
+				graph.createEdge(target, source, id + "-reverse").setLineString(geometry);
 
 			}
 		}
